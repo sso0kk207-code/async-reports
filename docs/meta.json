@@ -1,0 +1,23 @@
+{
+  "title": "Асинхронные отчёты на Celery",
+  "kind": "Фоновые задачи · Celery · Excel",
+  "tagline": "Тяжёлые отчёты не блокируют API: статус, прогресс, повторные попытки и готовый Excel с диаграммой",
+  "accent": "#2dd4bf",
+  "stack": ["Python 3.12", "FastAPI", "Celery", "Redis", "SQLAlchemy 2", "openpyxl", "Docker", "pytest"],
+  "features": [
+    "Ответ API за миллисекунды, работа идёт в Celery",
+    "Прогресс по этапам, отмена, предпросмотр в браузере",
+    "Идемпотентная задача, acks_late, повторные попытки",
+    "Дубль заказа возвращает уже строящийся отчёт",
+    "Excel с формулами итогов и диаграммой"
+  ],
+  "metrics": [["202", "мгновенный ответ"], ["×3", "авто-повторы при сбое"]],
+  "run": ["python", "scripts/dev.py", "--port", "{port}"],
+  "ready": "/health",
+  "env": {"STEP_DELAY": "0.5"},
+  "pages": [
+    {"path": "/reports/1/preview", "name": "report-sales.png", "wait": 600, "height": 640},
+    {"path": "/reports/2/preview", "name": "report-top.png", "wait": 600, "height": 760}
+  ],
+  "demo_title": "python scripts/demo.py — заказ, прогресс, повторы, скачивание"
+}
